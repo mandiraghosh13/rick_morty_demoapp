@@ -1,4 +1,4 @@
-# Welcome to your Rick & Monty Demo App project
+# Welcome to Rick & Monty Demo App project
 
 ## Project info
 
