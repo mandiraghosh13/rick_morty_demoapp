@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Rick & Morty Space Theme - Light Mode Fallback */
+    --background: 218 23% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Portal Green Primary */
+    --primary: 166 100% 42%;
+    --primary-foreground: 220 25% 8%;
+
+    /* Sci-fi Secondary */
+    --secondary: 220 25% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Electric Blue Accent */
+    --accent: 195 100% 55%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 16%;
+    --ring: 166 100% 42%;
+
+    --radius: 0.75rem;
+
+    /* Custom Rick & Morty Variables */
+    --portal-green: 166 100% 42%;
+    --portal-glow: 166 100% 65%;
+    --space-blue: 195 100% 55%;
+    --cosmic-purple: 280 85% 65%;
+    --neon-pink: 320 85% 65%;
+    
+    /* Gradients */
+    --gradient-portal: linear-gradient(135deg, hsl(166 100% 42%), hsl(195 100% 55%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(280 85% 65%), hsl(320 85% 65%));
+    --gradient-space: linear-gradient(180deg, hsl(218 23% 8%), hsl(220 25% 12%));
+    
+    /* Shadows & Effects */
+    --glow-portal: 0 0 30px hsl(166 100% 42% / 0.5);
+    --glow-cosmic: 0 0 20px hsl(280 85% 65% / 0.3);
+    --shadow-deep: 0 25px 50px -12px hsl(220 25% 8% / 0.8);
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 166 100% 42%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 166 100% 42%;
+  }
+
+  .dark {
+    /* Dark mode uses same Rick & Morty space theme */
+    --background: 218 23% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 166 100% 42%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 25% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 195 100% 55%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 16%;
+    --ring: 166 100% 42%;
+    
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 166 100% 42%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 166 100% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-space);
+    min-height: 100vh;
+  }
+  
+  /* Portal glow animation */
+  @keyframes portal-pulse {
+    0%, 100% { 
+      box-shadow: var(--glow-portal); 
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(166 100% 42% / 0.8); 
+      transform: scale(1.02);
+    }
+  }
+  
+  .portal-glow {
+    animation: portal-pulse 3s ease-in-out infinite;
+  }
+  
+  /* Cosmic shimmer effect */
+  @keyframes cosmic-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .cosmic-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--portal-green) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: cosmic-shimmer 2s infinite;
+  }
+}
